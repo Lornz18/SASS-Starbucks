@@ -2,10 +2,10 @@
     background-color: $clr-l-green;
     min-height: 800px;
     background-image: url("../img/star.png");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position-x: -10rem;
-    background-position-y: 20rem;
+    background-position-x: 20rem;
+    background-position-y: 55rem;
     display: flex;
     text-align: center;
     &__text{
@@ -79,7 +79,7 @@
 }
 
 .started{
-    padding: 2rem 0;
+    padding: 5rem 0;
     .container{
         text-align: center;
     }
@@ -127,9 +127,6 @@
         }
     }
     @include mediaQuery($break-lg){
-        h1{
-            margin-top: 10rem;
-        }
         &__wrapper{
             @include grid(3, 2rem);
         }
@@ -161,7 +158,7 @@
                 display: flex;
                 justify-content: space-between;
                 li{
-                    padding: 1rem 2rem;
+                    padding: 2rem 2rem;
                     &.active{
                         border-bottom: 4px solid $clr-grenn;
                     }
@@ -178,6 +175,7 @@
         }
         .coffee-content{
             background: $clr-l-green;
+            padding-bottom: 5rem;
             .coffee__tab__content{
                 display: none;
                 text-align: center;
@@ -191,6 +189,9 @@
                         width: 50rem;
                         height: 100%;
                     }
+                }
+                &__text{
+                    text-align: center;
                 }
             }
         }
@@ -260,7 +261,6 @@
         &__text{
             width: 68rem;
             margin: 0 auto;
-            margin-top: 10rem;
             p{
                 font-size: 1.8rem;
             }
@@ -285,3 +285,204 @@
         }
     }
 }
+
+.ways-to-pay{
+    background: $clr-gray;
+    .container{
+        text-align: center;
+    }
+    &__text{
+        padding-top: 5rem;
+        p{
+            margin: 2rem 0;
+        }
+    }
+    &__content{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding-bottom: 10rem;
+        &__header{
+            text-align: left;
+            margin: 2rem 0;
+        }
+        &__text{
+            &__item{
+            display: flex;
+            text-align: left;
+            gap: 2rem;
+            margin: 2rem;
+                img{
+                    @include imgFit(11rem,100%);
+                }
+                ul{
+                    li{
+                        h5{
+                            font-size: 2rem;
+                        }
+                        p{
+                            margin-top: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+        &:not(:last-child){
+            border-bottom: 1px solid black;
+        }
+    }
+    @include mediaQuery($break-lg){
+        &__wrapper{
+        }
+        &__content{
+            flex-direction: row;
+
+            &__header{
+                width: 25rem;
+            }
+            &__text{
+                display: flex;
+                &__item{
+                    p{
+                        width: 22rem;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+.rewards{
+    background: $clr-l-green;
+    &__wrapper{
+        display: flex;
+        flex-direction: column;
+        img{
+            @include imgFit(10rem,100%);
+            &:last-child{
+                align-self: flex-end;
+            }
+        }
+    }
+    &__text{
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        img{
+            @include imgFit(20rem,100%);
+        }
+        h1{
+            width: 20rem;
+        }
+    }
+    &__action{
+        margin: 2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a{
+            background: $clr-grenn;
+            border-radius: 3rem;
+            padding: 1rem 1.5rem;
+            color: white;
+            &:hover{
+                opacity: .9;
+            }
+        }
+    }
+    @include mediaQuery($break-lg){
+        background-image: url("../img/844262945b2a8b8cfb293156e2583872.png");
+        .container{
+            max-width: 170rem;
+        }
+        &__wrapper{
+            background: $clr-l-green;
+            padding: 0 20rem;
+        }
+        &__text{
+            width: 100%;
+            max-width: 60rem;
+            margin: 2rem auto;
+
+            h1{
+                width: unset;
+                font-size: 3rem;
+            }
+            p{
+                margin-top: 2rem;
+                font-size: 2rem;
+            }
+        }
+        &__action{
+            font-size: 2rem;
+        }
+    }
+}
+
+.question{
+    &__wrapper{
+        padding: 5rem 0;
+        h1{
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        p{
+            width: 100%;
+            min-width: 42rem;
+        }
+        a{
+            color: $clr-grenn;
+            text-decoration: underline;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+    @include mediaQuery($break-lg){
+        &__wrapper{
+            padding-left: 20rem;
+            p{
+                max-width: 75rem;
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+.terms{
+    background: $clr-gray;
+    &__wrapper{
+        p{
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            a{
+                color:$clr-grenn;
+                text-decoration: underline;
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &__content{
+        &__item{
+            margin: 3rem 0;
+        }
+        h6{
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    }
+    @include mediaQuery($break-lg){
+        &__content{
+            @include grid(2,2rem);
+            &__item{
+                margin-bottom: 0
+            }
+        }
+    }
+}
+

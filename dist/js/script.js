@@ -30,3 +30,12 @@ function removeActiveContent() {
     star.classList.remove("active");
   });
 }
+
+// LINKS
+const links = document.querySelectorAll(".footer__content__links h4");
+links.forEach((baba) => {
+  baba.addEventListener("click", () => {
+    baba.nextElementSibling.classList.toggle("open");
+    baba.querySelector("i").classList.toggle("open");
+  });
+});
