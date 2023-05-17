@@ -39,3 +39,15 @@ links.forEach((baba) => {
     baba.querySelector("i").classList.toggle("open");
   });
 });
+
+
+// scroll
+const gutter = document.querySelector(".gutter");
+window.addEventListener("scroll", () => {
+  console.log(window.pageYOffset);
+  if (window.pageYOffset >= 100) {
+    gutter.classList.add("fixed");
+  } else {
+    gutter.classList.remove("fixed");
+  }
+});

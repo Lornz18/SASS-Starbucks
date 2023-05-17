@@ -1,3 +1,28 @@
+.gutter{
+    background: #1E3932;
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 3px 10px gray;
+    &__wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $clr-light
+    }
+    &.fixed{
+        position: fixed;
+        top: 0rem;
+    }
+    @include mediaQuery($break-lg){
+        &__wrapper{
+            a{
+                display: none;
+            }
+        }
+    }
+}
+
 .banner{
     background-color: $clr-l-green;
     min-height: 800px;
@@ -8,8 +33,8 @@
     background-position-y: 55rem;
     display: flex;
     text-align: center;
+    padding-top: 10rem;
     &__text{
-        padding-top: 10rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -159,8 +184,12 @@
                 justify-content: space-between;
                 li{
                     padding: 2rem 2rem;
+                    position: relative;
                     &.active{
-                        border-bottom: 4px solid $clr-grenn;
+                        &::before{
+                            width: 100%;
+                            transition: .5s ease;
+                        }
                     }
                     a{
                         font-size: 2rem;
@@ -170,23 +199,39 @@
                             font-size: 2rem;
                         }
                     }
+                    &::before{
+                        content: "";
+                        width: 0;
+                        left: 0;
+                        height: 4px;
+                        background-color: $clr-grenn;
+                        display: block;
+                        position: absolute;
+                        bottom: 0;
+                    }
                 }
             }
         }
         .coffee-content{
             background: $clr-l-green;
-            padding-bottom: 5rem;
+            position: relative;
+            min-height: 35rem;
             .coffee__tab__content{
-                display: none;
+                // display: none;
+                opacity: 0;
                 text-align: center;
                 padding: 0 2rem;
+                transition: .5s ease;
+                transform: translateX(5rem);
+                position: absolute;
                 &.active{
-                    display: flex;
-                    flex-direction: column;
+                    opacity: 1;
+                    transition: .5s ease;
+                    transform: translateX(0);
                 }
                 figure{
                     img{
-                        width: 50rem;
+                        width: 40rem;
                         height: 100%;
                     }
                 }
@@ -211,13 +256,26 @@
                 }
             }
             .coffee-content{
+                display: flex;
+                justify-content: center;
                 .coffee__tab__content{
-                    max-width: 100rem;
+                    display: flex;
                     align-items: center;
-                    text-align: left;
-                    margin: 0 auto;
+                    top: 3rem;
+                    gap: 5rem;
                     &.active{
-                        flex-direction: row;
+                        max-width: 85rem;
+                    }
+                    &__text{
+                        text-align: left;
+                        h3{
+                            margin-bottom: 2rem;
+                            font-size: 3rem;
+                        }
+                        p{
+                            font-size: 2rem;
+                            line-height: 3rem;
+                        }
                     }
                 }
             }
@@ -332,11 +390,9 @@
         }
     }
     @include mediaQuery($break-lg){
-        &__wrapper{
-        }
         &__content{
-            flex-direction: row;
-
+            @include grid(4,5rem);
+            padding: 5rem 0; 
             &__header{
                 width: 25rem;
             }

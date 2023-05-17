@@ -36,9 +36,19 @@ body {
   padding: 1.5rem;
 }
 
+.btn {
+  display: inline-block;
+  color: hsl(0, 0%, 100%);
+  border-radius: 5rem;
+  border: 1px solid hsl(0, 0%, 100%);
+}
+.btn:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .footer {
   margin-top: 5rem;
-  padding: 10rem 0;
+  padding-bottom: 10rem;
   box-shadow: 0px 0.5px 8px gray;
 }
 .footer__content ul li {
@@ -141,8 +151,6 @@ body {
 
 .header {
   position: relative;
-  position: fixed;
-  width: 100%;
   background: white;
   box-shadow: 0px 0.5px 8px gray;
 }
@@ -300,6 +308,29 @@ body {
   background: hsla(0, 0%, 46%, 0.5);
 }
 
+.gutter {
+  background: #1E3932;
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 3px 10px gray;
+}
+.gutter__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: hsl(0, 0%, 100%);
+}
+.gutter.fixed {
+  position: fixed;
+  top: 0rem;
+}
+@media screen and (min-width: 1080px) {
+  .gutter__wrapper a {
+    display: none;
+  }
+}
+
 .banner {
   background-color: rgb(212, 233, 226);
   min-height: 800px;
@@ -310,9 +341,9 @@ body {
   background-position-y: 55rem;
   display: flex;
   text-align: center;
+  padding-top: 10rem;
 }
 .banner__text {
-  padding-top: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -462,9 +493,11 @@ body {
 }
 .coffee-tab .coffee-nav ul li {
   padding: 2rem 2rem;
+  position: relative;
 }
-.coffee-tab .coffee-nav ul li.active {
-  border-bottom: 4px solid hsl(159, 100%, 19%);
+.coffee-tab .coffee-nav ul li.active::before {
+  width: 100%;
+  transition: 0.5s ease;
 }
 .coffee-tab .coffee-nav ul li a {
   font-size: 2rem;
@@ -474,21 +507,36 @@ body {
 .coffee-tab .coffee-nav ul li a span {
   font-size: 2rem;
 }
+.coffee-tab .coffee-nav ul li::before {
+  content: "";
+  width: 0;
+  left: 0;
+  height: 4px;
+  background-color: hsl(159, 100%, 19%);
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
 .coffee-tab .coffee-content {
   background: rgb(212, 233, 226);
-  padding-bottom: 5rem;
+  position: relative;
+  min-height: 35rem;
 }
 .coffee-tab .coffee-content .coffee__tab__content {
-  display: none;
+  opacity: 0;
   text-align: center;
   padding: 0 2rem;
+  transition: 0.5s ease;
+  transform: translateX(5rem);
+  position: absolute;
 }
 .coffee-tab .coffee-content .coffee__tab__content.active {
-  display: flex;
-  flex-direction: column;
+  opacity: 1;
+  transition: 0.5s ease;
+  transform: translateX(0);
 }
 .coffee-tab .coffee-content .coffee__tab__content figure img {
-  width: 50rem;
+  width: 40rem;
   height: 100%;
 }
 .coffee-tab .coffee-content .coffee__tab__content__text {
@@ -504,14 +552,29 @@ body {
   .coffee-tab .coffee-nav ul li a {
     font-size: 3rem;
   }
+  .coffee-tab .coffee-content {
+    display: flex;
+    justify-content: center;
+  }
   .coffee-tab .coffee-content .coffee__tab__content {
-    max-width: 100rem;
+    display: flex;
     align-items: center;
-    text-align: left;
-    margin: 0 auto;
+    top: 3rem;
+    gap: 5rem;
   }
   .coffee-tab .coffee-content .coffee__tab__content.active {
-    flex-direction: row;
+    max-width: 85rem;
+  }
+  .coffee-tab .coffee-content .coffee__tab__content__text {
+    text-align: left;
+  }
+  .coffee-tab .coffee-content .coffee__tab__content__text h3 {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+  }
+  .coffee-tab .coffee-content .coffee__tab__content__text p {
+    font-size: 2rem;
+    line-height: 3rem;
   }
 }
 
@@ -632,7 +695,10 @@ body {
 }
 @media screen and (min-width: 1080px) {
   .ways-to-pay__content {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5rem;
+    padding: 5rem 0;
   }
   .ways-to-pay__content__header {
     width: 25rem;
